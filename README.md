@@ -1,6 +1,6 @@
-# nur-packages-template
+# NUR-庭
 
-**A template for [NUR](https://github.com/nix-community/NUR) repositories**
+*庭: an idyllic place containing plants and animals long extinct in the outside world preserving the knowledge of the ancient world within an isolated and concealed area*
 
 ## Setup
 
