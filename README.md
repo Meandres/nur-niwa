@@ -1,6 +1,6 @@
 # NUR-庭
 
-*庭: an idyllic place containing plants and animals long extinct in the outside world preserving the knowledge of the ancient world within an isolated and concealed area*
+*an idyllic place containing plants and animals long extinct in the outside world preserving the knowledge of the ancient world within an isolated and concealed area*
 
 ## Setup
 
