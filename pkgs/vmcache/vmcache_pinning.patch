@@ -1,0 +1,28 @@
+diff --git a/vmcache.cpp b/vmcache.cpp
+index 098867a..d044f05 100644
+--- a/vmcache.cpp
++++ b/vmcache.cpp
+@@ -1685,6 +1685,15 @@ struct vmcacheAdapter
+    }
+ };
+
++int pin_thread_to_core(int core_id) {
++   cpu_set_t cpuset;
++   CPU_ZERO(&cpuset);
++   CPU_SET(core_id, &cpuset);
++
++   pthread_t current_thread = pthread_self();
++   return pthread_setaffinity_np(current_thread, sizeof(cpu_set_t), &cpuset);
++}
++
+ template<class Fn>
+ void parallel_for(uint64_t begin, uint64_t end, uint64_t nthreads, Fn fn) {
+    std::vector<std::thread> threads;
+@@ -1694,6 +1703,7 @@ void parallel_for(uint64_t begin, uint64_t end, uint64_t nthreads, Fn fn) {
+    uint64_t perThread = n/nthreads;
+    for (unsigned i=0; i<nthreads; i++) {
+       threads.emplace_back([&,i]() {
++        pin_thread_to_core(i);
+          uint64_t b = (perThread*i) + begin;
+          uint64_t e = (i==(nthreads-1)) ? end : ((b+perThread) + begin);
+          fn(i, b, e);

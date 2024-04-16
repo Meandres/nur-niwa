@@ -1,7 +1,14 @@
 {
-  description = "My personal NUR repository";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-  outputs = { self, nixpkgs }:
+  description = "A collection of packages that I couldn't find anywhere else.";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+  outputs = { 
+    self
+    , nixpkgs
+    , flake-utils
+  }:
     let
       systems = [
         "x86_64-linux"
@@ -11,12 +18,18 @@
         "armv6l-linux"
         "armv7l-linux"
       ];
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
-    in
-    {
-      legacyPackages = forAllSystems (system: import ./default.nix {
-        pkgs = import nixpkgs { inherit system; };
-      });
-      packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
-    };
+      inherit (flake-utils.lib) eachSystem filterPackages;
+    in eachSystem systems (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowBroken = true;
+        };
+      in {
+        packages = (filterPackages system (import ./default.nix {inherit pkgs;}));
+        lib = import ./lib {inherit pkgs;};
+      }) // {
+        nixosModules =
+          builtins.mapAttrs (name: path: import path) (import ./modules);
+      };
 }
