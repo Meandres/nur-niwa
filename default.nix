@@ -15,9 +15,10 @@ rec {
   inherit pkgs;
 
   example-package = pkgs.callPackage ./pkgs/example-package { };
-  #og_linux_6_5 = pkgs.callPackage ./pkgs/linux_6_5 { };
   vmcache = pkgs.callPackage ./pkgs/vmcache { };
   exmap = pkgs.callPackage ./pkgs/exmap { };
+  urunc = pkgs.callPackage ./pkgs/urunc {};
+  bima = pkgs.callPackage ./pkgs/bima {};
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
