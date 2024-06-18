@@ -19,6 +19,6 @@ rec {
   exmap = pkgs.callPackage ./pkgs/exmap { };
   urunc = pkgs.callPackage ./pkgs/urunc {};
   bima = pkgs.callPackage ./pkgs/bima {};
-  # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
-  # ...
+  vhive = pkgs.callPackage ./pkgs/vhive { };
+  firecracker-containerd = pkgs.callPackage ./pkgs/firecracker-containerd { };
 }
