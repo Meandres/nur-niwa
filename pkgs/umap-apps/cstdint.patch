@@ -1,0 +1,43 @@
+diff --git a/src/bfs/bfs_kernel.hpp b/src/bfs/bfs_kernel.hpp
+index 0fdd7ae..4e733ff 100644
+--- a/src/bfs/bfs_kernel.hpp
++++ b/src/bfs/bfs_kernel.hpp
+@@ -17,6 +17,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+ #include <iostream>
+ #include <limits>
++#include <cstdint>
+
+ #ifdef _OPENMP
+ #include <omp.h>
+diff --git a/src/bfs/compute_degree_distribution.cpp b/src/bfs/compute_degree_distribution.cpp
+index 27c70a2..cf2d53a 100644
+--- a/src/bfs/compute_degree_distribution.cpp
++++ b/src/bfs/compute_degree_distribution.cpp
+@@ -19,6 +19,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ #include <unordered_map>
+ #include <vector>
+ #include <algorithm>
++#include <cstdint>
+
+ /// This is a utility program to compute a degree distribution
+ /// This program treat the input files as directed graph
+@@ -90,4 +91,4 @@ int main(int argc, char **argv) {
+   std::cout << "Finished degree distribution computation" << std::endl;
+
+   return 0;
+-}
+\ No newline at end of file
++}
+diff --git a/src/bfs/ingest_edge_list.cpp b/src/bfs/ingest_edge_list.cpp
+index a975d5b..461a05b 100644
+--- a/src/bfs/ingest_edge_list.cpp
++++ b/src/bfs/ingest_edge_list.cpp
+@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ #include <algorithm>
+ #include <tuple>
+ #include <cstring>
++#include <cstdint>
+
+ #include "../utility/bitmap.hpp"
+ #include "../utility/mmap.hpp"

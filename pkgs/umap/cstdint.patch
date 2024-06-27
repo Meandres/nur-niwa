@@ -1,0 +1,36 @@
+diff --git a/examples/bfs/bfs_kernel.hpp b/examples/bfs/bfs_kernel.hpp
+index 8c8613b..599ab8a 100644
+--- a/examples/bfs/bfs_kernel.hpp
++++ b/examples/bfs/bfs_kernel.hpp
+@@ -24,6 +24,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+ #include "utility/bitmap.hpp"
+ #include "utility/open_mp.hpp"
++#include <cstdint>
+
+ namespace bfs {
+
+diff --git a/examples/bfs/rmat_graph_generator/ingest_edge_list.cpp b/examples/bfs/rmat_graph_generator/ingest_edge_list.cpp
+index 09303f6..3ba259d 100644
+--- a/examples/bfs/rmat_graph_generator/ingest_edge_list.cpp
++++ b/examples/bfs/rmat_graph_generator/ingest_edge_list.cpp
+@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ #include <algorithm>
+ #include <tuple>
+ #include <cstring>
++#include <cstdint>
+
+ #include "utility/bitmap.hpp"
+ #include "utility/mmap.hpp"
+diff --git a/examples/bfs/utility/bitmap.hpp b/examples/bfs/utility/bitmap.hpp
+index 1881b85..c78c293 100644
+--- a/examples/bfs/utility/bitmap.hpp
++++ b/examples/bfs/utility/bitmap.hpp
+@@ -16,6 +16,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ #define LIB_UTILITY_BITMAP_HPP
+
+ #include <iostream>
++#include <cstdint>
+
+ namespace utility
+ {

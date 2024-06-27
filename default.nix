@@ -21,4 +21,6 @@ rec {
   bima = pkgs.callPackage ./pkgs/bima {};
   vhive = pkgs.callPackage ./pkgs/vhive { };
   firecracker-containerd = pkgs.callPackage ./pkgs/firecracker-containerd { };
+  umap = pkgs.callPackage ./pkgs/umap { };
+  umap-apps = pkgs.callPackage ./pkgs/umap-apps { inherit umap; };
 }
