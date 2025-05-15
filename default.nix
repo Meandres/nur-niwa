@@ -6,7 +6,7 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs, unstable-pkgs }:
 
 rec {
   # The `lib`, `modules`, and `overlays` names are special
@@ -23,4 +23,5 @@ rec {
   firecracker-containerd = pkgs.callPackage ./pkgs/firecracker-containerd { };
   umap = pkgs.callPackage ./pkgs/umap { };
   umap-apps = pkgs.callPackage ./pkgs/umap-apps { inherit umap; };
+  tpchgen-rs = unstable-pkgs.callPackage ./pkgs/tpchgen-rs { };
 }

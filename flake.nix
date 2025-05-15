@@ -1,12 +1,14 @@
 {
-  description = "A collection of packages that I couldn't find anywhere else.";
+  description = "A collection of packages that I couldn't find anywhere else (and that I used at some point).";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=24.11";
+    unstable-nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs = { 
     self
     , nixpkgs
+    , unstable-nixpkgs
     , flake-utils
   }:
     let
@@ -25,9 +27,13 @@
           inherit system;
           config.allowBroken = true;
         };
+        unstable-pkgs = import unstable-nixpkgs {
+          inherit system;
+          config.allowBroken = true;
+        };
       in {
-        packages = (filterPackages system (import ./default.nix {inherit pkgs;}));
-        lib = import ./lib {inherit pkgs;};
+        packages = (filterPackages system (import ./default.nix {inherit pkgs unstable-pkgs;}));
+        lib = import ./lib {inherit pkgs unstable-pkgs;};
       }) // {
         nixosModules =
           builtins.mapAttrs (name: path: import path) (import ./modules);
