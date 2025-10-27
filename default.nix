@@ -14,14 +14,15 @@ rec {
   modules = import ./modules; # NixOS modules
   inherit pkgs;
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
-  vmcache = pkgs.callPackage ./pkgs/vmcache { };
-  exmap = pkgs.callPackage ./pkgs/exmap { };
-  urunc = pkgs.callPackage ./pkgs/urunc {};
   bima = pkgs.callPackage ./pkgs/bima {};
-  vhive = pkgs.callPackage ./pkgs/vhive { };
+  example-package = pkgs.callPackage ./pkgs/example-package { };
+  exmap = pkgs.callPackage ./pkgs/exmap { };
   firecracker-containerd = pkgs.callPackage ./pkgs/firecracker-containerd { };
+  tpchgen-rs = unstable-pkgs.callPackage ./pkgs/tpchgen-rs { };
+  trace-cmd = pkgs.callPackage ./pkgs/trace-cmd { };
   umap = pkgs.callPackage ./pkgs/umap { };
   umap-apps = pkgs.callPackage ./pkgs/umap-apps { inherit umap; };
-  tpchgen-rs = unstable-pkgs.callPackage ./pkgs/tpchgen-rs { };
+  urunc = pkgs.callPackage ./pkgs/urunc {};
+  vhive = pkgs.callPackage ./pkgs/vhive { };
+  vmcache = pkgs.callPackage ./pkgs/vmcache { };
 }
