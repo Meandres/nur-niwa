@@ -15,6 +15,7 @@ rec {
   inherit pkgs;
 
   bima = pkgs.callPackage ./pkgs/bima {};
+  driverctl = pkgs.callPackage ./pkgs/driverctl {};
   example-package = pkgs.callPackage ./pkgs/example-package { };
   exmap = pkgs.callPackage ./pkgs/exmap { };
   firecracker-containerd = pkgs.callPackage ./pkgs/firecracker-containerd { };
